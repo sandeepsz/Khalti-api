@@ -23,29 +23,28 @@ app.use(
 
 app.post("/khalti-pay", async (req, res) => {
   const payload = req.body;
-  const response = await axios.post(
-    "https://a.khalti.com/api/v2/epayment/initiate/",
-    payload,
-    {
-      headers: {
-        Authorization: `Key ${process.env.KHALTI_SECRETE_KEY}`,
-      },
-    }
-  );
-
-  if (response) {
+  try {
+    const response = await axios.post(
+      "https://a.khalti.com/api/v2/epayment/initiate/",
+      payload,
+      {
+        headers: {
+          Authorization: `Key ${process.env.KHALTI_SECRET_KEY}`,
+        },
+      }
+    );
     res.json({
       success: true,
       data: response.data,
     });
-  } else {
-    res.json({
+  } catch (error) {
+    res.status(500).json({
       success: false,
-      msg: "something went wrong",
+      msg: "Something went wrong",
+      error: error.message,
     });
   }
 });
-
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => console.log(`Server listining on ${PORT} `));
