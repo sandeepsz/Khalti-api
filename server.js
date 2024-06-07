@@ -4,7 +4,11 @@ const axios = require("axios");
 const cors = require("cors");
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://khalti-api-pvem.onrender.com", "http://localhost:3000"],
+  })
+);
 
 require("dotenv").config();
 
