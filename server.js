@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 const cors = require("cors");
-const { createProxyMiddleware } = require("http-proxy-middleware");
 
 app.use(express.json());
 app.use(cors());
@@ -13,14 +12,6 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.use(
-  "/khalti-pay",
-  createProxyMiddleware({
-    target: "https://khalti-api-pvem.onrender.com",
-    changeOrigin: true,
-  })
-);
-
 app.post("/khalti-pay", async (req, res) => {
   const payload = req.body;
   try {
@@ -29,7 +20,7 @@ app.post("/khalti-pay", async (req, res) => {
       payload,
       {
         headers: {
-          Authorization: `Key 9d453f0c8c8d4a64aed21415d990a6ad`,
+          Authorization: `Key9d453f0c8c8d4a64aed21415d990a6ad`,
         },
       }
     );
