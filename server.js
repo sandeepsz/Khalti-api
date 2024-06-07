@@ -29,7 +29,7 @@ app.post("/khalti-pay", async (req, res) => {
       payload,
       {
         headers: {
-          Authorization: `Key ${process.env.KHALTI_SECRET_KEY}`,
+          Authorization: `Key 9d453f0c8c8d4a64aed21415d990a6ad`,
         },
       }
     );
