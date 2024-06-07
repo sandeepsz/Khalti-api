@@ -9,7 +9,7 @@ app.use(cors());
 require("dotenv").config();
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("I am khalti API");
 });
 
 app.post("/khalti-pay", async (req, res) => {
@@ -20,7 +20,7 @@ app.post("/khalti-pay", async (req, res) => {
       payload,
       {
         headers: {
-          Authorization: `Key9d453f0c8c8d4a64aed21415d990a6ad`,
+          Authorization: `Key 9d453f0c8c8d4a64aed21415d990a6ad`,
         },
       }
     );
