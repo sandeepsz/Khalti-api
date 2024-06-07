@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 const cors = require("cors");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 app.use(express.json());
 app.use(cors());
@@ -11,6 +12,14 @@ require("dotenv").config();
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+app.use(
+  "/khalti-pay",
+  createProxyMiddleware({
+    target: "https://khalti-api-pvem.onrender.com",
+    changeOrigin: true,
+  })
+);
 
 app.post("/khalti-pay", async (req, res) => {
   const payload = req.body;
