@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 require("dotenv").config();
 
 app.get("/", (req, res) => {
-  res.send("I am khalti API");
+  res.send("I am Khalti API deployed on render");
 });
 
 app.post("/khalti-pay", async (req, res) => {
